@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<script src="Finals_65022881.js"></Script>
+<head>
+	<title>Insert Data</title>
+	<style>
+		
+        body {
+			background-color: #f4f4f4;
+			font-family: Arial, sans-serif;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			background-color: #6f23eb;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			padding: 20px;
+			margin: 50px auto;
+			max-width: 500px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		input, select {
+			margin-bottom: 10px;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 16px;
+			color: #555;
+		}
+
+		input[type="button"] {
+			background-color: #140124;
+			color: #fff;
+			cursor: pointer;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		input[type="button"]:hover {
+			background-color: #8e0cf8;
+		}
+
+		table {
+			margin-top: 20px;
+			border-collapse: collapse;
+			width: 100%;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			color: #555;
+		}
+
+		table th, table td {
+			padding: 10px;
+			text-align: center;
+			border: 1px solid #ccc;
+		}
+
+		table th {
+			background-color: #4caf50;
+			color: #fff;
+		} 
+	</style>
+</head>
+<body>
+	<div class="container">
+		<form>
+			<head><h1><b>Insert data</b></h1></head>
+            <label for="firstname">ชื่อ</label>
+			<input type="text" id="firstname" name="firstname">
+			<label for="lastname">นามสกุล</label>
+			<input type="text" id="lastname" name="lastname">
+			<label for="gender">เพศ</label>
+			<select id="gender" name="gender">
+				<option value="male">ชาย</option>
+				<option value="female">หญิง</option>
+			</select>
+			<label for="birthdate">วันเกิด</label>
+			<input type="date" id="birthdate" name="birthdate">
+			<input type="button" value="Add" onclick="insertData()">
+		</form>
+    </body> 
+    <div id="table"></div> 
+    
+    <table id="myTable"></table>
+</div>
+
+<script>
+    var data = [];
+
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(form);
+        var name = formData.get("name");        
+        var surname = formData.get("surname");
+        var gender = formData.get("gender");
+        var birthdate = formData.get("birthdate");
+        var record = { name: name, Surname: surname, gender: gender, birthdate: birthdate};
+        data.push(record);
+        renderTable();
+        form.reset();
+    });
+
+    function renderTable() {
+        var table = document.getElementById("myTable");
+        table.innerHTML = "";
+        if (data.length > 0) {
+            var headerRow = table.insertRow();
+            var nameHeader = headerRow.insertCell(0);
+            var emailHeader = headerRow.insertCell(1);
+            var ageHeader = headerRow.insertCell(2);
+            nameHeader.innerHTML = "<b>Name</b>";
+            surnameHeader.innerHTML = "<b>Surname</b>";
+            genderHeader.innerHTML = "<b>Gender</b>";
+            birthdateHeader.innerHTML = "<b>Birthdate</b>";
+            for (var i = 0; i < data.length; i++) {
+                var row = table.insertRow();
+                var nameCell = row.insertCell(0);
+                var surnameCell=row.insertCell(1);
+                var genderCell = row.insertCell(2);
+                var birthdateCell = row.insertCell(3);
+                nameCell.innerHTML = data[i].name;
+                surnameCell.innerHTML = data[i].surname;
+                genderCell.innerHTML = data[i].gender;
+                birthdateCell.innerHTML = data[i].birthdate;
+            }
+        }
+    }
+</script>
+
+    </html>>
+	
+        
+    
+
+                    
+				
